@@ -2,7 +2,7 @@ import { formatCurrency } from "@/utils/currency";
 import { ShoeProps } from "./type";
 import { Link } from "react-router-dom";
 import { Button } from "../button";
-import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { shoeRating } from "@/utils/rating";
 import { StarIcon } from "@heroicons/react/20/solid";
 

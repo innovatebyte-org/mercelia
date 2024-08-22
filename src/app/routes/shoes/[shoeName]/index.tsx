@@ -1,7 +1,7 @@
 import { dummyShoesData } from "@/data/shoes";
 import { SingleShoe } from "@/features/shoes/components/single-shoe";
 import { Head } from "@/seo";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Fragment } from "react/jsx-runtime";
 
 export const ViewShoeRoute = () => {
