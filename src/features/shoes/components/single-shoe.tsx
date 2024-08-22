@@ -51,7 +51,7 @@ export const SingleShoe = ({ slug }: { slug: string }) => {
               className="size-5/6 object-cover object-center"
             />
           </div>
-          <div className="w-full lg:w-64 lg:order-first flex flex-row lg:flex-col items-center gap-4 lg:gap-3 overflow-x-auto">
+          <div className="w-full lg:w-64 lg:order-first flex flex-row lg:flex-col items-center gap-4 lg:gap-3 overflow-x-auto hide-scrollbar">
             {shoe.images.map((image, index) => (
               <div
                 className="size-32 lg:size-48 flex-none rounded-md bg-slate-50 hover:border border-slate-900 hover:bg-slate-100 flex items-center justify-center"

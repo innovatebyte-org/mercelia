@@ -47,7 +47,11 @@ export const Shoe = ({
         </p>
       </div>
       <div className="w-full flex flex-row lg:flex-col items-center lg:items-start gap-3 lg:gap-2">
-        <Button width={"full"} disabled={isShoeAvailableForPurchase}>
+        <Button
+          size={"lg"}
+          width={"full"}
+          disabled={isShoeAvailableForPurchase}
+        >
           Add to Bag <ShoppingBagIcon className="text-current size-6" />
         </Button>
       </div>
