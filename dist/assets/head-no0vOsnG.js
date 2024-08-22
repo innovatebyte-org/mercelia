@@ -1,0 +1,1 @@
+import{H as s,j as t,a as n}from"./index-xhGxv6t3.js";const r=new s({}),o=({title:e="",description:a=""}={})=>t.jsx(n,{helmetData:r,title:e?`${e} | Mercelia`:void 0,defaultTitle:"Mercelia",children:t.jsx("meta",{name:"description",content:a})});export{o as H};
