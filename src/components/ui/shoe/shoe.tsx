@@ -23,7 +23,7 @@ export const Shoe = ({
     <div className="w-full h-full flex flex-col gap-2 items-start">
       <Link
         to={`/shoes/${slug}`}
-        className="w-full h-80 bg-slate-50/75 hover:bg-slate-100 group rounded-md flex items-center justify-center relative"
+        className="w-full h-96 bg-slate-50/75 hover:bg-slate-100 group rounded-md flex items-center justify-center relative"
       >
         {topRated ? (
           <div className="absolute top-2 lg:top-4 left-2 lg:left-4 flex items-center gap-2 p-2 px-2.5 rounded-full bg-slate-300">
