@@ -1,3 +1,10 @@
+import { AuthLayout } from "@/components/layout/auth-layout";
+import { Login } from "@/features/auth/login/components";
+
 export const LoginRoute = () => {
-  return <div className="text-slate-900">Login</div>;
+  return (
+    <AuthLayout title="Login">
+      <Login />
+    </AuthLayout>
+  );
 };

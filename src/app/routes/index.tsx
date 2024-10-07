@@ -32,12 +32,58 @@ export const createRoutes = () => {
               return { Component: RegisterRoute };
             },
           },
+          {
+            path: "forgot-password",
+            lazy: async () => {
+              const { ForgotPasswordRoute } = await import(
+                "./auth/forgot-password"
+              );
+              return { Component: ForgotPasswordRoute };
+            },
+          },
+          {
+            path: "verify",
+            lazy: async () => {
+              const { VerifyRoute } = await import("./auth/verify");
+              return { Component: VerifyRoute };
+            },
+          },
+          {
+            path: "change-password",
+            lazy: async () => {
+              const { ChangePasswordRoute } = await import(
+                "./auth/change-password"
+              );
+              return { Component: ChangePasswordRoute };
+            },
+          },
           // app
           {
             path: "cart",
             lazy: async () => {
               const { CartRoute } = await import("./cart");
               return { Component: CartRoute };
+            },
+          },
+          {
+            path: "checkout",
+            lazy: async () => {
+              const { CheckoutRoute } = await import("./checkout");
+              return { Component: CheckoutRoute };
+            },
+          },
+          {
+            path: "dashboard",
+            lazy: async () => {
+              const { DashboardRoute } = await import("./dashboard");
+              return { Component: DashboardRoute };
+            },
+          },
+          {
+            path: "delivery",
+            lazy: async () => {
+              const { DeliverySettingsRoute } = await import("./delivery");
+              return { Component: DeliverySettingsRoute };
             },
           },
           // app >> shoes
@@ -60,6 +106,13 @@ export const createRoutes = () => {
                 },
               },
               {
+                path: "all",
+                lazy: async () => {
+                  const { AllShoesRoute } = await import("./shoes/all");
+                  return { Component: AllShoesRoute };
+                },
+              },
+              {
                 path: ":shoeSlug",
                 element: <ShoeRoot />,
                 children: [
@@ -79,15 +132,6 @@ export const createRoutes = () => {
                         "./shoes/[shoeName]/edit"
                       );
                       return { Component: EditShoeRoute };
-                    },
-                  },
-                  {
-                    path: "buy",
-                    lazy: async () => {
-                      const { BuyShoeRoute } = await import(
-                        "./shoes/[shoeName]/buy"
-                      );
-                      return { Component: BuyShoeRoute };
                     },
                   },
                 ],

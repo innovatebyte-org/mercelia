@@ -1,12 +1,10 @@
+import { ContentLayout } from "@/components/layout/content-layout";
 import { AllShoes } from "@/features/shoes/components/all-shoes";
-import { Head } from "@/seo";
-import { Fragment } from "react/jsx-runtime";
 
 export const ShoesListRoute = () => {
   return (
-    <Fragment>
-      <Head title="Top Selling Shoes" description="Top selling shoes" />
+    <ContentLayout title="Top Selling Shoes" description="Top selling shoes">
       <AllShoes />
-    </Fragment>
+    </ContentLayout>
   );
 };

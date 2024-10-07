@@ -1,6 +1,6 @@
 import { Helmet, HelmetData } from "react-helmet-async";
 
-type HeadProps = {
+export type HeadProps = {
   title?: string;
   description?: string;
 };

@@ -14,7 +14,7 @@ export const Shoe = ({
   slug,
   reviews,
 }: ShoeProps) => {
-  const isShoeAvailableForPurchase = stock <= 0;
+  const isShoeAvailableForPurchase = stock > 0;
 
   const totalShoeRating = shoeRating(reviews || []);
   const topRated = totalShoeRating >= 4;
@@ -50,7 +50,7 @@ export const Shoe = ({
         <Button
           size={"lg"}
           width={"full"}
-          disabled={isShoeAvailableForPurchase}
+          disabled={!isShoeAvailableForPurchase}
         >
           Add to Bag <ShoppingBagIcon className="text-current size-6" />
         </Button>

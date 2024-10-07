@@ -1,35 +1,28 @@
 import { Button } from "@/components/ui/button";
-import { dummyShoesData } from "@/data/shoes";
-import { Head } from "@/seo";
+import { ShoeProps } from "@/components/ui/shoe/type";
+import { useAuthContext } from "@/store/authContext";
+
 import { cn } from "@/utils/cn";
 import { formatCurrency } from "@/utils/currency";
 import { shoeRating } from "@/utils/rating";
 import { StarIcon } from "@heroicons/react/20/solid";
 import {
   HeartIcon,
+  PencilSquareIcon,
   ShoppingBagIcon,
   StarIcon as StarIconOutline,
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const SingleShoe = ({ slug }: { slug: string }) => {
-  // fetch single shoe with shoeSlug
-  const shoe = dummyShoesData.find((shoe) => shoe.slug === slug);
-
-  if (!shoe) {
-    return (
-      <div>
-        <Head title={"Shoe not found"} />
-        Shoe not found <Link to={"/shoes"}>View all shoes</Link>
-      </div>
-    );
-  }
-
+export const SingleShoe = ({ shoe }: { shoe: ShoeProps }) => {
+  const { user } = useAuthContext();
   const [mainImage, setMainImage] = useState<string>(
     shoe?.previewImage as string,
   );
   if (shoe) {
+    const isShoeAvailableForPurchase = shoe.stock > 0;
+
     const totalShoeRating = shoeRating(shoe.reviews || []);
     const topRated = totalShoeRating >= 4;
 
@@ -70,7 +63,14 @@ export const SingleShoe = ({ slug }: { slug: string }) => {
         </div>
 
         <div className="w-full h-full flex flex-col items-start gap-4 mt-2">
-          <h4 className="text-3xl font-bold text-slate-800">{shoe?.name}</h4>
+          <h4 className="text-3xl font-bold text-slate-800 flex items-center gap-2">
+            {shoe?.name}{" "}
+            {user?.isAdmin ? (
+              <Link to={"edit"}>
+                <PencilSquareIcon className="size-6 text-current text-slate-600 hover:text-slate-800" />
+              </Link>
+            ) : null}
+          </h4>
           <p className="text-4xl text-slate-950">
             {formatCurrency(shoe.price)}
           </p>
@@ -117,12 +117,7 @@ export const SingleShoe = ({ slug }: { slug: string }) => {
               </p>
               <div className="w-full flex items-center gap-2">
                 {shoe.availableSizes.map((size, index) => (
-                  <Button
-                    variant={"secondary"}
-                    width={"full"}
-                    size={"sm"}
-                    key={index}
-                  >
+                  <Button variant={"secondary"} size={"sm"} key={index}>
                     {size}
                   </Button>
                 ))}
@@ -130,10 +125,19 @@ export const SingleShoe = ({ slug }: { slug: string }) => {
             </div>
           ) : null}
           <div className="w-full flex items-center gap-3">
-            <Button width={"full"} size={"lg"}>
+            <Button
+              width={"full"}
+              size={"lg"}
+              disabled={!isShoeAvailableForPurchase}
+            >
               Add to Bag <ShoppingBagIcon className="text-current size-6" />
             </Button>
-            <Button variant={"secondary"} size={"lg"} className="group">
+            <Button
+              variant={"secondary"}
+              size={"lg"}
+              className="group"
+              disabled={!isShoeAvailableForPurchase}
+            >
               <HeartIcon className="text-current size-6 group-hover:fill-current" />
             </Button>
           </div>

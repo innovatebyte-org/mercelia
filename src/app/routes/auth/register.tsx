@@ -1,3 +1,10 @@
+import { AuthLayout } from "@/components/layout/auth-layout";
+import { Register } from "@/features/auth/register/components";
+
 export const RegisterRoute = () => {
-  return <div>Register</div>;
+  return (
+    <AuthLayout title="Register">
+      <Register />
+    </AuthLayout>
+  );
 };
